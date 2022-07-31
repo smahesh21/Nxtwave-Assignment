@@ -1,13 +1,15 @@
+
 import {Component} from 'react'
 
 import {AiOutlineSearch} from 'react-icons/ai'
 import Loader from 'react-loader-spinner'
-import TagItem from '../TagItem'
 import ResourceCard from '../ResourceCard'
 
 import {
   ResourceCardsContainer,
   TagsContainer,
+  TagListItem,
+  TagButton,
   HomeMainContainer,
   HomeResponsiveContainer,
   SearchContainer,
@@ -101,14 +103,19 @@ class Home extends Component {
     const {activeTag} = this.state
     return (
       <TagsContainer>
-        {tagsList.map(eachTag => (
-          <TagItem
-            tagDetails={eachTag}
-            key={eachTag.id}
-            activeTag={activeTag}
-            onClickResourceTag={this.onClickResourceTag}
-          />
-        ))}
+        {tagsList.map(eachTag => {
+          const {displayText, tag} = eachTag
+          const onClickTag = () => {
+            this.onClickResourceTag(tag)
+          }
+          return (
+            <TagListItem onClick={onClickTag}>
+              <TagButton type="button" isActive={activeTag === tag}>
+                {displayText}
+              </TagButton>
+            </TagListItem>
+          )
+        })}
       </TagsContainer>
     )
   }
