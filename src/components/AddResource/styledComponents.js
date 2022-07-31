@@ -64,26 +64,43 @@ export const InputElement = styled.input`
   border: 1px solid #d7dfe9;
   border-radius: 2px;
 `
+export const DescriptionInputElement = styled.textarea`
+  outline: none;
+  cursor: pointer;
+  background: #ffffff;
+  padding-left: 10px;
+  border: 1px solid #d7dfe9;
+  border-radius: 2px;
+`
+export const ImageUploadContainer = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+`
+export const ImageUploadInputElement = styled.input`
+  height: 23px;
+  width: 70%;
+  outline: none;
+  cursor: pointer;
+  background: #ffffff;
+  border: 1px solid #d7dfe9;
+  border-radius: 2px;
+  margin-top: 20px;
+  margin-right: 10px;
+`
+export const UploadedImage = styled.img`
+  height: 40px;
+  width: 40px;
+`
 export const BreakElement = styled.br``
 
-export const NameElementError = styled.p`
+export const ErrorMessageElement = styled.p`
   font-size: 14px;
   color: red;
   margin-top: 0px;
   margin-bottom: 0px;
 `
-export const LinkElementError = styled.p`
-  font-size: 14px;
-  color: red;
-  margin-top: 0px;
-  margin-bottom: 0px;
-`
-export const DescriptionElementError = styled.p`
-  font-size: 14px;
-  color: red;
-  margin-top: 0px;
-  margin-bottom: 0px;
-`
+
 export const ButtonContainer = styled.div`
   width: 100%;
   display: flex;
@@ -110,4 +127,27 @@ export const ImageContainer = styled.div`
 export const Image = styled.img`
   height: 100%;
   width: 100%;
+`
+export const AddResourceLoaderContainer = styled.div`
+  height: 50vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
+
+export const AddResourceFailureViewContainer = styled.div`
+  height: 25vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
+export const AddResourceFailureHeading = styled.h1`
+  font-family: 'Roboto';
+  font-size: 24px;
+  text-align: center;
+  color: #171f46;
 `
