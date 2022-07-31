@@ -2,19 +2,17 @@ import {Component} from 'react'
 
 import {AiOutlineSearch} from 'react-icons/ai'
 import Loader from 'react-loader-spinner'
-
+import TagItem from '../TagItem'
 import ResourceCard from '../ResourceCard'
 
 import {
   ResourceCardsContainer,
   TagsContainer,
-  TagListItem,
   HomeMainContainer,
   HomeResponsiveContainer,
   SearchContainer,
   SearchElement,
   LoaderContainer,
-  TagButton,
   FailureViewContainer,
   FailureHeading,
 } from './styledComponents'
@@ -31,16 +29,19 @@ const tagsList = [
     id: 1,
     displayText: 'Resources',
     tag: 'resources',
+    isActive: false,
   },
   {
     id: 2,
     displayText: 'Requests',
     tag: 'request',
+    isActive: false,
   },
   {
     id: 3,
     displayText: 'Users',
     tag: 'user',
+    isActive: false,
   },
 ]
 
@@ -96,20 +97,21 @@ class Home extends Component {
     }
   }
 
-  renderTagsSection = () => (
-    <TagsContainer>
-      {tagsList.map(eachTag => {
-        const onClickTag = () => {
-          this.onClickResourceTag(eachTag.tag)
-        }
-        return (
-          <TagListItem onClick={onClickTag} key={eachTag.id}>
-            <TagButton type="button">{eachTag.displayText}</TagButton>
-          </TagListItem>
-        )
-      })}
-    </TagsContainer>
-  )
+  renderTagsSection = () => {
+    const {activeTag} = this.state
+    return (
+      <TagsContainer>
+        {tagsList.map(eachTag => (
+          <TagItem
+            tagDetails={eachTag}
+            key={eachTag.id}
+            activeTag={activeTag}
+            onClickResourceTag={this.onClickResourceTag}
+          />
+        ))}
+      </TagsContainer>
+    )
+  }
 
   renderSearchElementSection = () => {
     const {userInput} = this.state
