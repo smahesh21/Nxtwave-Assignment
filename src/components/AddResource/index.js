@@ -1,10 +1,13 @@
+
 import {Component} from 'react'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
+import Cookies from 'js-cookie'
 import {ToastContainer, toast, Zoom} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import {BsUpload} from 'react-icons/bs'
 import {v4 as uuidv4} from 'uuid'
 import Loader from 'react-loader-spinner'
+import Header from '../Header'
 import {
   AddResourceHomeContainer,
   AddResourceResponsiveContainer,
@@ -46,10 +49,6 @@ class AddResource extends Component {
     userInputLink: '',
     userInputDescription: '',
     userInputImage: '',
-    isNameEmpty: false,
-    isLinkEmpty: false,
-    isDescriptionEmpty: false,
-    isImageEmpty: false,
     changeImage: false,
   }
 
@@ -57,61 +56,40 @@ class AddResource extends Component {
     this.getResourceData()
   }
 
-  onBlurName = () => {
-    const {userInputName} = this.state
-    if (userInputName === '') {
-      this.setState({isNameEmpty: true})
-    }
+  onClickUser = () => {
+    Cookies.set('addButtonClicked', false, {expires: 10})
   }
 
-  onBlurLink = () => {
+  isValidResourceLink = () => {
     const {userInputLink} = this.state
-    if (userInputLink === '') {
-      this.setState({isLinkEmpty: true})
-    }
+    return (
+      userInputLink.toLowerCase().endsWith('.com') ||
+      userInputLink.toLowerCase().endsWith('.org') ||
+      userInputLink.toLowerCase().endsWith('.co.in') ||
+      userInputLink.toLowerCase().endsWith('.in')
+    )
   }
 
-  onBlurDescription = () => {
+  isValidResourceDescription = () => {
     const {userInputDescription} = this.state
-    if (userInputDescription === '') {
-      this.setState({isDescriptionEmpty: true})
-    }
-  }
-
-  onBlurImage = () => {
-    const {userInputImage} = this.state
-    if (userInputImage === '') {
-      this.setState({isImageEmpty: true})
-    }
+    return userInputDescription.length >= 25
   }
 
   onChangeName = event => {
     this.setState({userInputName: event.target.value})
-    if (event.target.value === '') {
-      this.setState({isNameEmpty: true})
-    }
   }
 
   onChangeLink = event => {
     this.setState({userInputLink: event.target.value})
-    if (event.target.value === '') {
-      this.setState({isLinkEmpty: true})
-    }
   }
 
   onChangeDescription = event => {
     this.setState({userInputDescription: event.target.value})
-    if (event.target.value === '') {
-      this.setState({isDescriptionEmpty: true})
-    }
   }
 
   onChangeImage = event => {
     this.setState({userInputImage: event.target.value})
     this.setState(prevState => ({changeImage: !prevState.changeImage}))
-    if (event.target.value === '') {
-      this.setState({isImageEmpty: true})
-    }
   }
 
   onClickSubmit = event => {
@@ -122,32 +100,55 @@ class AddResource extends Component {
       userInputDescription,
       userInputImage,
     } = this.state
-
+    const isNewResourceLinkValid = this.isValidResourceLink()
+    const isNewResourceDescriptionValid = this.isValidResourceDescription()
     let newResource
     if (
       userInputName === '' ||
-      userInputImage === '' ||
-      userInputDescription === '' ||
+      (userInputImage === '' && isNewResourceLinkValid === false) ||
+      (userInputDescription === '' &&
+        isNewResourceDescriptionValid === false) ||
       userInputLink === ''
     ) {
       newResource = null
-      toast('Error: Check the validations once again', {
+      toast('Error: Please fill the required fields in the form.', {
         className: 'error-toast',
         draggable: true,
         position: toast.POSITION.BOTTOM_CENTER,
       })
     } else if (userInputName === '') {
-      this.setState({isNameEmpty: true})
-    } else if (userInputLink === '') {
-      this.setState({isLinkEmpty: true})
-    } else if (userInputDescription === '') {
-      this.setState({isDescriptionEmpty: true})
+      toast('Error: Check the validations once again', {
+        className: 'error-toast',
+        draggable: true,
+        position: toast.POSITION.BOTTOM_CENTER,
+      })
+    } else if (userInputLink === '' && isNewResourceLinkValid === false) {
+      toast('Error: Check the validations once again', {
+        className: 'error-toast',
+        draggable: true,
+        position: toast.POSITION.BOTTOM_CENTER,
+      })
+    } else if (
+      userInputDescription === '' &&
+      isNewResourceDescriptionValid === false
+    ) {
+      toast('Error: Check the validations once again', {
+        className: 'error-toast',
+        draggable: true,
+        position: toast.POSITION.BOTTOM_CENTER,
+      })
     } else if (userInputImage === '') {
-      this.setState({isImageEmpty: true})
+      toast('Error: Check the validations once again', {
+        className: 'error-toast',
+        draggable: true,
+        position: toast.POSITION.BOTTOM_CENTER,
+      })
     } else if (
       userInputName !== '' &&
       userInputLink !== '' &&
+      isNewResourceLinkValid &&
       userInputDescription !== '' &&
+      isNewResourceDescriptionValid &&
       userInputImage !== ''
     ) {
       newResource = {
@@ -163,10 +164,7 @@ class AddResource extends Component {
         userInputLink: '',
         userInputDescription: '',
         userInputImage: '',
-        isNameEmpty: false,
-        isLinkEmpty: false,
-        isDescriptionEmpty: false,
-        isImageEmpty: false,
+        changeImage: false,
       }))
       toast('Added Successfully', {
         className: 'success-toast',
@@ -201,12 +199,14 @@ class AddResource extends Component {
       userInputDescription,
       userInputImage,
       addResourceList,
-      isNameEmpty,
-      isImageEmpty,
-      isDescriptionEmpty,
-      isLinkEmpty,
       changeImage,
     } = this.state
+    const isNameEmpty = userInputName.length === 0
+    const isLinkEmpty = userInputLink.length === 0
+    const isDescriptionEmpty = userInputDescription.length === 0
+    const isImageUrlEmpty = userInputImage.length === 0
+    const isLinkValid = this.isValidResourceLink() === false
+    const isValidDescription = this.isValidResourceDescription() === false
 
     console.log(addResourceList)
 
@@ -215,7 +215,9 @@ class AddResource extends Component {
         <CardDetailsFillContainer>
           <UserContainer>
             <Link to="/">
-              <UserTextButton type="button">&lt; User</UserTextButton>
+              <UserTextButton type="button" onClick={this.onClickUser}>
+                &lt; User
+              </UserTextButton>
             </Link>
           </UserContainer>
           <FormContainer>
@@ -233,9 +235,9 @@ class AddResource extends Component {
                 placeholder="Enter the Name"
               />
               <BreakElement />
-              {isNameEmpty && (
+              {isNameEmpty ? (
                 <ErrorMessageElement>Name is required*</ErrorMessageElement>
-              )}
+              ) : null}
               <LabelElement htmlFor="link">LINK</LabelElement>
               <BreakElement />
               <InputElement
@@ -247,9 +249,9 @@ class AddResource extends Component {
                 placeholder="Enter the Link"
               />
               <BreakElement />
-              {isLinkEmpty && (
+              {isLinkEmpty || isLinkValid ? (
                 <ErrorMessageElement>Link is required*</ErrorMessageElement>
-              )}
+              ) : null}
 
               <LabelElement htmlFor="description">DESCRIPTION</LabelElement>
               <BreakElement />
@@ -266,11 +268,11 @@ class AddResource extends Component {
                 {userInputDescription}
               </DescriptionInputElement>
               <BreakElement />
-              {isDescriptionEmpty && (
+              {isDescriptionEmpty || isValidDescription ? (
                 <ErrorMessageElement>
                   Description is required*
                 </ErrorMessageElement>
-              )}
+              ) : null}
               <BreakElement />
               <ImageUploadContainer>
                 <ImageUploadInputElement
@@ -285,7 +287,7 @@ class AddResource extends Component {
                   <BsUpload size={16} /> {changeImage ? 'Change' : 'Upload'}
                 </LabelElement>
               </ImageUploadContainer>
-              {isImageEmpty && (
+              {isImageUrlEmpty && (
                 <ErrorMessageElement>Image is required*</ErrorMessageElement>
               )}
               <ButtonContainer>
@@ -333,8 +335,13 @@ class AddResource extends Component {
   }
 
   render() {
+    const token = Cookies.get('token')
+    if (token === undefined) {
+      return <Redirect to="/login" />
+    }
     return (
       <AddResourceHomeContainer>
+        <Header />
         {this.renderAddResourceDisplaySectionBasedOnApiStatus()}
         <>
           <ToastContainer
