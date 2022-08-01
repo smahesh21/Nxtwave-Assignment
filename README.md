@@ -14,7 +14,9 @@ Add UI reference image yourself
 <details>
 <summary>Add Route Name</summary>
 <br/>
-Add the design files according to the route (if any) and responsiveness
+---> Login Route
+---> Home Route
+---> AddResource Route
 
 <!-- - [Extra Small (Size < 576px) and Small (Size >= 576px)](remove this text and add the image URL here)
 - [Medium (Size >= 768px), Large (Size >= 992px) and Extra Large (Size >= 1200px)](remove this text and add the image URL here) -->
