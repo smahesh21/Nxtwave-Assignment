@@ -6,6 +6,7 @@ export const HeaderMainContainer = styled.div`
   width: 100vw;
   padding-left: 20px;
   padding-right: 20px;
+  background-color: #ffffff;
 `
 
 export const HeaderResponsiveContainer = styled.div`
@@ -32,11 +33,19 @@ export const AddButtonProfileLogoContainer = styled.div`
 export const AddButton = styled.button`
   width: 80px;
   height: 30px;
+  text-decoration: none;
+  display: ${props => (props.isClicked ? 'block' : 'none')};
   background-color: #0b69ff;
   color: #ffffff;
   border-radius: 5px;
   border: none;
   margin-right: 16px;
+`
+export const LogoutButton = styled.button`
+  outline: none;
+  cursor: pointer;
+  border: none;
+  background: transparent;
 `
 export const ProfileLogo = styled.img`
   width: 40px;
