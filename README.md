@@ -39,11 +39,17 @@ Add the design files according to the route (if any) and responsiveness
 
 The following functionalities have implemented in the application:
 
-- Login page:
-     After proviving valid username, mobileNumber and by clicking the login button. It will navigate to the home route.
+- Login Route: 
+     After providing valid username, mobileNumber and by clicking the login button. It will navigate to the home route.
      Mobile number should she start with either 9 or 8 or 7 or 6 and it must have the 10 digits only.
      It will show an error message if we provide invalid username or mobileNumber.
-
+- Home Route: 
+     In this route, I have displayed all the resources in the page, we can filter the resources by clicking the respecting tabs and also filter the resources by            searching with the resource name. In the Header, by clicking the add button it will navigate to the AddResource Route.
+- AddResource Route: 
+     In this route, we can add new resource to this portal by providing all the valid details.
+     For link section, the link must be ends with (".com" or ".co.in" or ".org" or ".net" or ".in") . if we provide other than this it won't add to the resourceList        and it shows an error with with message like "Error: Please will the required fields in the form".
+     For the description, the length of the characters must be greater than or equal to 25 otherwise it shows an error.
+     After providing the valid details in the respective fields and click the creaate button, it will show the success message like "Added Successfully" with the help      of toast.
 </details>
 
 ### Assignment Completion Checklist
