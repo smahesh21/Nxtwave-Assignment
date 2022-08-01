@@ -1,8 +1,11 @@
 
 import {Component} from 'react'
-
+import {Redirect} from 'react-router-dom'
+import Cookies from 'js-cookie'
 import {AiOutlineSearch} from 'react-icons/ai'
 import Loader from 'react-loader-spinner'
+import Header from '../Header'
+
 import ResourceCard from '../ResourceCard'
 
 import {
@@ -197,8 +200,14 @@ class Home extends Component {
   }
 
   render() {
+    const token = Cookies.get('token')
+    if (token === undefined) {
+      return <Redirect to="/login" />
+    }
+
     return (
       <HomeMainContainer>
+        <Header />
         <HomeResponsiveContainer>
           {this.renderTagsSection()}
           {this.renderSearchElementSection()}
