@@ -95,8 +95,18 @@ The following functionalities have implemented in the application:
 <br/>
 
 -->> Credentials 
-     username should be any name.
-     mobileNumber must to number and exact 10 digits.
+     <br />
+     username:
+     <br />
+     -> username should be any name.
+     <br />
+     -> mobileNumber: 
+     <br />
+     -> mobileNumber must to number
+     <br />
+     -> must contains exact 10 numbers
+     <br />
+     -> must start with 9 or 8 or 7 or 6
 
 </details>
 
