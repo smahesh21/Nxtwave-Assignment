@@ -37,9 +37,12 @@ Add the design files according to the route (if any) and responsiveness
 <summary>Functionality to be added</summary>
 <br/>
 
-The app must have the following functionalities:
+The following functionalities have implemented in the application:
 
-- Add all the functionalities to be achieved(according to the route, if any) yourself
+- Login page:
+     After proviving valid username, mobileNumber and by clicking the login button. It will navigate to the home route.
+     Mobile number should she start with either 9 or 8 or 7 or 6 and it must have the 10 digits only.
+     It will show an error message if we provide invalid username or mobileNumber.
 
 </details>
 
