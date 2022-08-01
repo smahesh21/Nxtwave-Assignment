@@ -100,13 +100,13 @@ The following functionalities have implemented in the application:
      <br />
      -> username should be any name.
      <br />
-     -> mobileNumber: 
+     mobileNumber: 
      <br />
-     -> mobileNumber must to number
+     -> mobileNumber must be a number
      <br />
      -> must contains exact 10 numbers
      <br />
-     -> must start with 9 or 8 or 7 or 6
+     -> must starts with 9 or 8 or 7 or 6
 
 </details>
 
