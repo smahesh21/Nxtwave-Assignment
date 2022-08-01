@@ -107,6 +107,7 @@ The following functionalities have implemented in the application:
 <br/>
 
 ->  https://media-content.ccbp.in/website/react-assignment/resources.json
+      <br />
 ->  https://media-content.ccbp.in/website/react-assignment/add_resource.json
 
 </details>
