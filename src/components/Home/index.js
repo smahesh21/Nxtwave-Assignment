@@ -1,13 +1,17 @@
 import {Component} from 'react'
-
+import {Redirect} from 'react-router-dom'
+import Cookies from 'js-cookie'
 import {AiOutlineSearch} from 'react-icons/ai'
 import Loader from 'react-loader-spinner'
-import TagItem from '../TagItem'
+import Header from '../Header'
+
 import ResourceCard from '../ResourceCard'
 
 import {
   ResourceCardsContainer,
   TagsContainer,
+  TagListItem,
+  TagButton,
   HomeMainContainer,
   HomeResponsiveContainer,
   SearchContainer,
@@ -101,14 +105,19 @@ class Home extends Component {
     const {activeTag} = this.state
     return (
       <TagsContainer>
-        {tagsList.map(eachTag => (
-          <TagItem
-            tagDetails={eachTag}
-            key={eachTag.id}
-            activeTag={activeTag}
-            onClickResourceTag={this.onClickResourceTag}
-          />
-        ))}
+        {tagsList.map(eachTag => {
+          const {displayText, tag} = eachTag
+          const onClickTag = () => {
+            this.onClickResourceTag(tag)
+          }
+          return (
+            <TagListItem onClick={onClickTag}>
+              <TagButton type="button" isActive={activeTag === tag}>
+                {displayText}
+              </TagButton>
+            </TagListItem>
+          )
+        })}
       </TagsContainer>
     )
   }
@@ -190,8 +199,14 @@ class Home extends Component {
   }
 
   render() {
+    const token = Cookies.get('token')
+    if (token === undefined) {
+      return <Redirect to="/login" />
+    }
+
     return (
       <HomeMainContainer>
+        <Header />
         <HomeResponsiveContainer>
           {this.renderTagsSection()}
           {this.renderSearchElementSection()}

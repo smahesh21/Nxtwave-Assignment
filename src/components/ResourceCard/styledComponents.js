@@ -10,6 +10,9 @@ export const ResourcesCard = styled.li`
   background-color: #ffffff;
   margin: 10px;
   padding: 16px;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 `
 
 export const IconAndTitleContainer = styled.div`
