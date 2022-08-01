@@ -28,4 +28,3 @@ const ResourceCard = props => {
 }
 
 export default ResourceCard
-
