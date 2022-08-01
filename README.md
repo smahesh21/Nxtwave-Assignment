@@ -89,7 +89,19 @@ The following functionalities have implemented in the application:
 <summary>Click to view</summary>
 <br>
 
-- Add third-party packages list yourself
+- Third-party packages, I have used in this assignment.
+     <br />
+     -> react-router-dom
+     <br />
+     -> react-icons
+     <br />
+     -> js-cookie
+     <br />
+     -> react-toastify
+     <br />
+     -> react-loader-spinner
+     <br />
+     -> uuid
 </details>
 
 ### Important Note
