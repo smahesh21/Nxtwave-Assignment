@@ -1,3 +1,4 @@
+
 import styled from 'styled-components'
 
 export const HomeMainContainer = styled.div`
@@ -16,6 +17,9 @@ export const HomeResponsiveContainer = styled.div`
   height: 100%;
   width: 80%;
   padding-top: 20px;
+  @media (max-width: 768px) {
+    width: 90%;
+  }
 `
 
 export const TagsContainer = styled.div`
@@ -32,11 +36,14 @@ export const TagButton = styled.button`
   border: 1px solid #bacad1;
   color: ${props => (props.isActive ? '#ffffff' : '#171F46')};
   background-color: ${props => (props.isActive ? '#0B69FF' : '#D7DFE9')};
+  @media (max-width: 768px) {
+    width: 100px;
+  }
 `
 
 export const SearchContainer = styled.div`
   height: 30px;
-  width: 400px;
+  width: 60%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -46,6 +53,9 @@ export const SearchContainer = styled.div`
   margin-left: 10px;
   padding-left: 10px;
   align-self: flex-start;
+  @media screen and (max-width: 768px) {
+    width: 90%;
+  }
 `
 export const SearchElement = styled.input`
   height: 90%;
@@ -72,6 +82,10 @@ export const ResourceCardsContainer = styled.ul`
   justify-content: flex-start;
   flex-wrap: wrap;
   padding-left: 0px;
+  @media screen and (max-width: 768px) {
+    margin-left: 0px;
+    padding-left: 0px;
+  }
 `
 export const FailureViewContainer = styled.div`
   height: 25vh;
