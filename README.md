@@ -66,22 +66,6 @@ The following functionalities have implemented in the application:
      -> After providing the valid details in the respective fields and click the creaate button, it will show the success message like "Added Successfully" with the           help of toast.
 </details>
 
-### Assignment Completion Checklist
-
-<details>
-<summary>Click to view</summary>
-
-- **Along with the below points, add your checklist specific to the assignment**
-
-- Read the instructions given in the assignment carefully and list down the **Assignment Completion Checklist** for the assignment and start working on it
-- The completion Checklist includes the below-mentioned points
-  - I have completed all the functionalities asked in the assignment
-  - I have used only the resources (Frameworks, Design files, APIs, third-party packages) mentioned in the assignment
-  - I have modified the README.md file based on my assignment instructions
-  - I have completed the assignment **ON TIME**
-- **Note:**
-  - Ensure that you have marked all the checklist points in your completion checklist before submitting the assignment
-  </details>
 
 ### Quick Tips
 
@@ -110,7 +94,9 @@ The following functionalities have implemented in the application:
 <summary>Click to view</summary>
 <br/>
 
-- Add any important note here, like user credentials for authentication.
+-->> Credentials 
+     username should be any name.
+     mobileNumber must to number and exact 10 digits.
 
 </details>
 
@@ -120,31 +106,9 @@ The following functionalities have implemented in the application:
 <summary>Data Fetch URLs</summary>
 <br/>
 
-- Add the URLs list to fetch the data yourself
+->  https://media-content.ccbp.in/website/react-assignment/resources.json
+->  https://media-content.ccbp.in/website/react-assignment/add_resource.json
 
 </details>
 
-<details>
-<summary>Image URLs</summary>
-<br/>
 
-- Add the list of all image URLs needed in the assignment yourself.
-
-</details>
-
-<details>
-<summary>Colors</summary>
-<br/>
-
-Add the text and background colours to be used in the assignment yourself.
-
-<!-- <div style="background-color: #3b82f6; width: 150px; padding: 10px; color: white">Hex: #3b82f6</div> -->
-
-</details>
-
-<details>
-<summary>Font-families</summary>
-
-- Add the font-families to be used in the assignment yourself.
-
-</details>
