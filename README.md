@@ -51,10 +51,12 @@ The following functionalities have implemented in the application:
      <br />
      It will show an error message if we provide invalid username or mobileNumber.
 - Home Route: 
+     <br />
      In this route, I have displayed all the resources in the page, we can filter the resources by clicking the respecting tabs and also filter the resources by            searching with the resource name.
      <br />
      In the Header, by clicking the add button it will navigate to the AddResource Route.
 - AddResource Route: 
+     <br />
      In this route, we can add new resource to this portal by providing all the valid details.
      <br />
      For link section, the link must be ends with (".com" or ".co.in" or ".org" or ".net" or ".in") . If we provide other than this it won't add to the resourceList        and it shows an error with with message like "Error: Please will the required fields in the form".
