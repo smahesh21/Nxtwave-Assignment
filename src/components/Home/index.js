@@ -112,7 +112,7 @@ class Home extends Component {
             this.onClickResourceTag(tag)
           }
           return (
-            <TagListItem onClick={onClickTag}>
+            <TagListItem key={eachTag.id} onClick={onClickTag}>
               <TagButton type="button" isActive={activeTag === tag}>
                 {displayText}
               </TagButton>
