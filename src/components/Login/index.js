@@ -81,7 +81,7 @@ class Login extends Component {
           id="number"
           value={mobileNumber}
           onChange={this.onChangeMobileNumber}
-          placeholder="10 digits Number"
+          placeholder="10 digits Number starts with 9 or 8 or 7 or 6"
         />
       </>
     )
@@ -97,7 +97,7 @@ class Login extends Component {
           id="username"
           value={username}
           onChange={this.onChangeUsername}
-          placeholder="Username"
+          placeholder="Name (only alphabets)"
         />
       </>
     )
