@@ -16,7 +16,7 @@ export const FormContainer = styled.form`
   flex-direction: column;
   align-items: center;
   border-radius: 8px;
-  width: 350px;
+  width: 50%;
   flex-shrink: 0;
   box-shadow: 0px 8px 40px rgba(7, 7, 7, 0.08);
   padding: 64px 48px 64px 48px;
