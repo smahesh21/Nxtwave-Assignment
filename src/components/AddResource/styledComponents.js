@@ -65,6 +65,8 @@ export const InputElement = styled.input`
   border-radius: 2px;
 `
 export const DescriptionInputElement = styled.textarea`
+  height: 30px;
+  width: 100%;
   outline: none;
   cursor: pointer;
   background: #ffffff;

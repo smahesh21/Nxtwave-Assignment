@@ -49,6 +49,7 @@ class AddResource extends Component {
     userInputDescription: '',
     userInputImage: '',
     changeImage: false,
+    isSubmitted: false,
   }
 
   componentDidMount() {
@@ -99,6 +100,7 @@ class AddResource extends Component {
       userInputDescription,
       userInputImage,
     } = this.state
+    this.setState({isSubmitted: true})
     const isNewResourceLinkValid = this.isValidResourceLink()
     const isNewResourceDescriptionValid = this.isValidResourceDescription()
     let newResource
@@ -159,6 +161,7 @@ class AddResource extends Component {
       }
       this.setState(prevState => ({
         addResourceList: [...prevState.addResourceList, newResource],
+        isSubmitted: false,
         userInputName: '',
         userInputLink: '',
         userInputDescription: '',
@@ -199,6 +202,7 @@ class AddResource extends Component {
       userInputImage,
       addResourceList,
       changeImage,
+      isSubmitted,
     } = this.state
     const isNameEmpty = userInputName.length === 0
     const isLinkEmpty = userInputLink.length === 0
@@ -234,8 +238,10 @@ class AddResource extends Component {
                 placeholder="Enter the Name"
               />
               <BreakElement />
-              {isNameEmpty ? (
-                <ErrorMessageElement>Name is required*</ErrorMessageElement>
+              {isSubmitted && isNameEmpty ? (
+                <ErrorMessageElement>
+                  Valid name is required*
+                </ErrorMessageElement>
               ) : null}
               <LabelElement htmlFor="link">LINK</LabelElement>
               <BreakElement />
@@ -248,8 +254,10 @@ class AddResource extends Component {
                 placeholder="Enter the Link"
               />
               <BreakElement />
-              {isLinkEmpty || isLinkValid ? (
-                <ErrorMessageElement>Link is required*</ErrorMessageElement>
+              {isSubmitted && (isLinkEmpty || isLinkValid) ? (
+                <ErrorMessageElement>
+                  Valid link is required*
+                </ErrorMessageElement>
               ) : null}
 
               <LabelElement htmlFor="description">DESCRIPTION</LabelElement>
@@ -257,8 +265,6 @@ class AddResource extends Component {
               <DescriptionInputElement
                 type="text"
                 id="description"
-                rows="4"
-                cols="68"
                 value={userInputDescription}
                 onChange={this.onChangeDescription}
                 onBlur={this.onBlurDescription}
@@ -267,9 +273,9 @@ class AddResource extends Component {
                 {userInputDescription}
               </DescriptionInputElement>
               <BreakElement />
-              {isDescriptionEmpty || isValidDescription ? (
+              {isSubmitted && (isDescriptionEmpty || isValidDescription) ? (
                 <ErrorMessageElement>
-                  Description is required*
+                  Valid description is required*
                 </ErrorMessageElement>
               ) : null}
               <BreakElement />
@@ -286,8 +292,10 @@ class AddResource extends Component {
                   <BsUpload size={16} /> {changeImage ? 'Change' : 'Upload'}
                 </LabelElement>
               </ImageUploadContainer>
-              {isImageUrlEmpty && (
-                <ErrorMessageElement>Image is required*</ErrorMessageElement>
+              {isSubmitted && isImageUrlEmpty && (
+                <ErrorMessageElement>
+                  Valid image is required*
+                </ErrorMessageElement>
               )}
               <ButtonContainer>
                 <CreateButton type="submit">Create</CreateButton>

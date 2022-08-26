@@ -33,7 +33,6 @@ export const AddButton = styled.button`
   width: 80px;
   height: 30px;
   text-decoration: none;
-  display: ${props => (props.isClicked ? 'block' : 'none')};
   background-color: #0b69ff;
   color: #ffffff;
   border-radius: 5px;
