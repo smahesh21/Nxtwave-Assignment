@@ -4,6 +4,8 @@ import Home from './components/Home'
 import AddResource from './components/AddResource'
 import './App.css'
 
+/* It will wrap all the components */
+
 const App = () => (
   <>
     <BrowserRouter>
